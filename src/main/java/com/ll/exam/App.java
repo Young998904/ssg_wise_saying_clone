@@ -77,6 +77,37 @@ public class App {
 
                     System.out.printf("%d번 명언이 삭제되었습니다.\n", paramId);
                     break;
+                case "수정" :
+                    int _paramId = rq.getIntParam("id", 0);
+                    // 0은 id 값으로 있을 수 없으므로 defaultValue 로 적합
+
+                    if (_paramId == 0) {
+                        System.out.println("id를 입력해주세요.");
+                        continue;
+                    }
+
+                    WiseSaying _wiseSaying = null;
+
+                    // 탐색
+                    for (WiseSaying __wiseSaying : wiseSayings) {
+                        if(__wiseSaying.id == _paramId) {
+                            _wiseSaying = __wiseSaying;
+                        }
+                    }
+
+                    if (_wiseSaying == null) {
+                        System.out.printf("%d번 명언은 존재하지 않습니다..\n", _paramId);
+                        continue;
+                    }
+
+                    System.out.printf("명언 (기존) : %s \n", _wiseSaying.context);
+                    System.out.printf("명언 : ");
+                    _wiseSaying.context = sc.nextLine();
+                    System.out.printf("작가 (기존) : %s\n", _wiseSaying.author);
+                    System.out.printf("작가 : ");
+                    _wiseSaying.author = sc.nextLine();
+
+                    break;
             }
         }
     }

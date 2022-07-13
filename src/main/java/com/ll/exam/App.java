@@ -15,7 +15,7 @@ public class App {
         outer:
         while (true) {
             System.out.printf("명령 ) ");
-            cmd = sc.nextLine();
+            cmd = sc.nextLine().trim();
             switch (cmd) {
                 case "종료" :
                     break outer;
@@ -24,14 +24,12 @@ public class App {
                     String context;
                     String author;
                     System.out.printf("명언 : ");
-                    context = sc.nextLine();
+                    context = sc.nextLine().trim();
                     System.out.printf("작가 : ");
-                    author = sc.nextLine();
-
-                    System.out.println(context);
-                    System.out.println(author);
+                    author = sc.nextLine().trim();
 
                     System.out.printf("%d번 명언이 등록되었습니다.\n", ++wiseSayingLastId);
+                    break;
             }
         }
     }

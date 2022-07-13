@@ -43,7 +43,7 @@ public class App {
                     break;
                 case "목록" :
                     System.out.println("번호 / 작가 / 명언");
-                    System.out.println("=------------------------");
+                    System.out.println("-------------------------");
 
                     for (int i=wiseSayings.size()-1; i >=0 ; i--) {
                         System.out.printf("%d / %s / %s \n",
@@ -51,7 +51,31 @@ public class App {
                     }
                     break;
                 case "삭제" :
+                    int paramId = rq.getIntParam("id", 0);
+                    // 0은 id 값으로 있을 수 없으므로 defaultValue 로 적합
 
+                    if (paramId == 0) {
+                        System.out.println("id를 입력해주세요.");
+                        continue;
+                    }
+
+                    WiseSaying wiseSaying_ = null;
+
+                    // 탐색
+                    for (WiseSaying wiseSaying__ : wiseSayings) {
+                        if(wiseSaying__.id == paramId) {
+                            wiseSaying_ = wiseSaying__;
+                        }
+                    }
+
+                    if (wiseSaying_ == null) {
+                        System.out.printf("%d번 명언은 존재하지 않습니다..\n", paramId);
+                        continue;
+                    }
+
+                    wiseSayings.remove(wiseSaying_);
+
+                    System.out.printf("%d번 명언이 삭제되었습니다.\n", paramId);
                     break;
             }
         }

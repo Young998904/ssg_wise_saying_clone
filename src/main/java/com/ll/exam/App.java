@@ -21,7 +21,10 @@ public class App {
         while (true) {
             System.out.printf("명령 ) ");
             cmd = sc.nextLine().trim();
-            switch (cmd) {
+
+            Rq rq = new Rq(cmd);
+
+            switch (rq.getPath()) {
                 case "종료" :
                     break outer;
 
@@ -46,6 +49,9 @@ public class App {
                         System.out.printf("%d / %s / %s \n",
                                 wiseSayings.get(i).id, wiseSayings.get(i).author, wiseSayings.get(i).context);
                     }
+                    break;
+                case "삭제" :
+
                     break;
             }
         }

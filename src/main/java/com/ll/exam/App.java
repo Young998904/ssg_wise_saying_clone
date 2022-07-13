@@ -41,8 +41,11 @@ public class App {
                 case "목록" :
                     System.out.println("번호 / 작가 / 명언");
                     System.out.println("=------------------------");
-                    // 클래스도입
-                    System.out.printf("%d / %s / %s");
+
+                    for (int i=wiseSayings.size()-1; i >=0 ; i--) {
+                        System.out.printf("%d / %s / %s \n",
+                                wiseSayings.get(i).id, wiseSayings.get(i).author, wiseSayings.get(i).context);
+                    }
                     break;
             }
         }

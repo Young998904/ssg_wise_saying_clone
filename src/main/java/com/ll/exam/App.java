@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
-    Scanner sc;
+    private Scanner sc;
 
     public App() {
         sc = new Scanner(System.in);

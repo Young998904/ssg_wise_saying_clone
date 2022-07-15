@@ -5,6 +5,12 @@ public class WiseSaying {
     String author;
     int id;
 
+    public WiseSaying(int id, String context, String author) {
+        this.id = id;
+        this.context = context;
+        this.author = author;
+    }
+
     @Override
     public String toString() {
         return """

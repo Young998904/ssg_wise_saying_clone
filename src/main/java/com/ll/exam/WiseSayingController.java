@@ -6,12 +6,9 @@ import java.util.Scanner;
 
 public class WiseSayingController {
     Scanner sc;
-    int wiseSayingLastId;
-    List<WiseSaying> wiseSayings;
+
     public WiseSayingController(Scanner sc) {
         this.sc = sc;
-        wiseSayingLastId = 0;
-        wiseSayings = new ArrayList<>();
     }
     public void write (Rq rq) {
         WiseSaying wiseSaying = new WiseSaying();
@@ -43,24 +40,18 @@ public class WiseSayingController {
             return;
         }
 
-        WiseSaying wiseSaying_ = null;
+        WiseSaying foundWiseSaying = findById(paramId);
 
-        // 탐색
-        for (WiseSaying wiseSaying__ : wiseSayings) {
-            if(wiseSaying__.id == paramId) {
-                wiseSaying_ = wiseSaying__;
-            }
-        }
-
-        if (wiseSaying_ == null) {
+        if (foundWiseSaying == null) {
             System.out.printf("%d번 명언은 존재하지 않습니다..\n", paramId);
             return;
         }
 
-        wiseSayings.remove(wiseSaying_);
+        wiseSayings.remove(foundWiseSaying);
 
         System.out.printf("%d번 명언이 삭제되었습니다.\n", paramId);
     }
+
     public void modify(Rq rq) {
         int _paramId = rq.getIntParam("id", 0);
         // 0은 id 값으로 있을 수 없으므로 defaultValue 로 적합
@@ -90,5 +81,14 @@ public class WiseSayingController {
         System.out.printf("작가 (기존) : %s\n", _wiseSaying.author);
         System.out.printf("작가 : ");
         _wiseSaying.author = sc.nextLine();
+    }
+    private WiseSaying findById(int paramId) {
+        // 탐색
+        for (WiseSaying wiseSaying : wiseSayings) {
+            if(wiseSaying.id == paramId) {
+                return wiseSaying;
+            }
+        }
+        return null;
     }
 }
